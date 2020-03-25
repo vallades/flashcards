@@ -1,3 +1,4 @@
+import 'package:flashcards/screens/home/components/CategoriesTile.dart';
 import 'package:flutter/material.dart';
 import 'package:flashcards/theme/style.dart' as Theme;
 
@@ -47,9 +48,62 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: 25),
-                height: 110,
+                height: 80,
+                child: ListView.builder(
+                    itemCount: 10,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return CategoriesTile(
+                        category: "Objetos",
+                      );
+                    }),
+              ),
+              
+              //Highlits
+              Container(
+                padding: EdgeInsets.symmetric(horizontal: 24),
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30)
+                  )
+                ),
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(top: 30),
+                      child: Row(
+                        children: <Widget>[
+                          Text(
+                            "Destaques",
+                            style: TextStyle(
+                              color: Colors.black87,
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Spacer(),
+                          Icon(
+                            Icons.more_vert,
+                            color: Colors.black87,
+                          )
+                        ],
+                      ),
+                    ),
+                    ListView.builder(
+                        itemCount: 10,
+                        shrinkWrap: true,
+                        physics: ClampingScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          return Container();
+                        }),
+                  ],
+                ),
 
-              )
+              ),
             ],
           ),
         ),
